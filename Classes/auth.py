@@ -63,6 +63,15 @@ def get_access_token() -> str:
     except FileNotFoundError:
         return ""
 
+def delete_token():
+    """
+        Delete the token
+    """
+    path = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(path, "auth.json")
+    if os.path.exists(path):
+        os.remove(path)
+
 
 class OpenAIAuth:
     def __init__(self, email_address: str, password: str, use_proxy: bool = False, proxy: str = None):
